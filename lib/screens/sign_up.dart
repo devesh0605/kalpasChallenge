@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:kalpas_internship/screens/sign_in.dart';
 
-class LoginScreen extends StatelessWidget {
+class SignUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,7 +13,6 @@ class LoginScreen extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          constraints: BoxConstraints.expand(),
           child: Column(
             children: [
               Container(
@@ -82,6 +82,7 @@ class LoginScreen extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(
                               horizontal: 30.0, vertical: 5.0),
                           child: TextField(
+                            keyboardType: TextInputType.emailAddress,
                             obscureText: true,
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
@@ -139,7 +140,10 @@ class LoginScreen extends StatelessWidget {
                           ),
                           child: GestureDetector(
                             onTap: () {
-                              print('Something cool will happen');
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return SignIn();
+                              }));
                             },
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
@@ -217,10 +221,18 @@ class LoginScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text('Have an account?'),
-                            Text(
-                              ' Sign in',
-                              style: TextStyle(
-                                color: Colors.orange[700],
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(context,
+                                    MaterialPageRoute(builder: (context) {
+                                  return SignIn();
+                                }));
+                              },
+                              child: Text(
+                                ' Sign in',
+                                style: TextStyle(
+                                  color: Colors.orange[700],
+                                ),
                               ),
                             ),
                           ],
