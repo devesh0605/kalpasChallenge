@@ -19,12 +19,29 @@ class NewsData {
 
 class NewsProvider extends ChangeNotifier {
   List<NewsData> _currentNews = [];
-  List get currentNews {
+  List<NewsData> _favoriteNews = [];
+  List<NewsData> get currentNews {
     return [..._currentNews];
   }
 
+  List<NewsData> get favoriteNews {
+    return [..._favoriteNews];
+  }
+
   void toggleFav(int index) {
-    _currentNews[index].isFav = !_currentNews[index].isFav;
+    if (_currentNews[index].isFav == true) {
+      _currentNews[index].isFav = false;
+    } else {
+      _currentNews[index].isFav = true;
+      _favoriteNews.add(_currentNews[index]);
+    }
+    notifyListeners();
+  }
+
+  void removeFav(NewsData newsData) {
+    _favoriteNews.remove(newsData);
+    int removeIndex = _currentNews.indexWhere((element) => element == newsData);
+    _currentNews[removeIndex].isFav = false;
     notifyListeners();
   }
 
