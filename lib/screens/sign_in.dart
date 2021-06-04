@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kalpas_internship/screens/news_screen.dart';
 import 'package:kalpas_internship/screens/sign_up.dart';
 
 class SignIn extends StatelessWidget {
@@ -133,7 +134,10 @@ class SignIn extends StatelessWidget {
                             ),
                             child: GestureDetector(
                               onTap: () {
-                                print('Something cool will happen');
+                                Navigator.pushReplacement(context,
+                                    MaterialPageRoute(builder: (context) {
+                                  return NewsScreen();
+                                }));
                               },
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(

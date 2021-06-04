@@ -3,17 +3,16 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:kalpas_internship/screens/favorite_screen.dart';
+import 'package:kalpas_internship/screens/news_screen.dart';
 
-class NewsScreen extends StatefulWidget {
+class FavoriteScreen extends StatefulWidget {
   @override
-  _NewsScreenState createState() => _NewsScreenState();
+  _FavoriteScreenState createState() => _FavoriteScreenState();
 }
 
-class _NewsScreenState extends State<NewsScreen> {
+class _FavoriteScreenState extends State<FavoriteScreen> {
   List result = [];
   bool isLoading = false;
-  bool isFav = false;
 
   Future<void> getNews() async {
     setState(() {
@@ -62,16 +61,10 @@ class _NewsScreenState extends State<NewsScreen> {
                                 child: Row(
                                   children: [
                                     IconButton(
-                                      icon: isFav
-                                          ? Icon(Icons.favorite)
-                                          : Icon(Icons.favorite_border),
+                                      icon: Icon(Icons.favorite),
+                                      color: Colors.red,
                                       iconSize: 35,
-                                      onPressed: () {
-                                        setState(() {
-                                          isFav = !isFav;
-                                        });
-                                      },
-                                      color: isFav ? Colors.red : null,
+                                      onPressed: () {},
                                     ),
                                     Expanded(
                                       child: Padding(
@@ -134,41 +127,11 @@ class _NewsScreenState extends State<NewsScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Container(
-                        alignment: Alignment.center,
-                        width: MediaQuery.of(context).size.width * 0.48,
-                        height: 80,
-                        decoration: BoxDecoration(
-                          color: Colors.blue[800],
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(20),
-                            topRight: Radius.circular(20),
-                          ),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.format_list_bulleted_sharp,
-                              color: Colors.white,
-                              size: 50,
-                            ),
-                            SizedBox(width: 10),
-                            Text(
-                              'News',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 30),
-                            ),
-                          ],
-                        ),
-                      ),
                       GestureDetector(
                         onTap: () {
                           Navigator.pushReplacement(context,
                               MaterialPageRoute(builder: (context) {
-                            return FavoriteScreen();
+                            return NewsScreen();
                           }));
                         },
                         child: Container(
@@ -186,13 +149,13 @@ class _NewsScreenState extends State<NewsScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(
-                                Icons.favorite,
-                                color: Colors.red,
+                                Icons.format_list_bulleted_sharp,
+                                color: Colors.black,
                                 size: 50,
                               ),
                               SizedBox(width: 10),
                               Text(
-                                'Favs',
+                                'News',
                                 style: TextStyle(
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold,
@@ -200,6 +163,36 @@ class _NewsScreenState extends State<NewsScreen> {
                               ),
                             ],
                           ),
+                        ),
+                      ),
+                      Container(
+                        alignment: Alignment.center,
+                        width: MediaQuery.of(context).size.width * 0.48,
+                        height: 80,
+                        decoration: BoxDecoration(
+                          color: Colors.blue[800],
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20),
+                            topRight: Radius.circular(20),
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.favorite,
+                              size: 50,
+                              color: Colors.white,
+                            ),
+                            SizedBox(width: 10),
+                            Text(
+                              'Favs',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 30),
+                            ),
+                          ],
                         ),
                       ),
                     ],

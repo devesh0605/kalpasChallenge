@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:kalpas_internship/screens/news_screen.dart';
 import 'package:kalpas_internship/screens/sign_up.dart';
 
 void main() {
@@ -15,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: NewsScreen(),
+      home: SignUp(),
     );
   }
 }
