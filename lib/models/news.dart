@@ -31,6 +31,7 @@ class NewsProvider extends ChangeNotifier {
   void toggleFav(int index) {
     if (_currentNews[index].isFav == true) {
       _currentNews[index].isFav = false;
+      _favoriteNews.remove(_currentNews[index]);
     } else {
       _currentNews[index].isFav = true;
       _favoriteNews.add(_currentNews[index]);
