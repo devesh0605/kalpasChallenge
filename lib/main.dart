@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kalpas_internship/screens/news_screen.dart';
 import 'package:kalpas_internship/screens/sign_up.dart';
 
 void main() {
@@ -10,11 +11,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'News App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SignUp(),
+      home: NewsScreen(),
     );
   }
 }
